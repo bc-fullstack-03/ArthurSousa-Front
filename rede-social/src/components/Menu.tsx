@@ -53,7 +53,7 @@ export function Menu() {
       </ul>
 
 
-      <Button className="w-72  mt-10  m-[39px]">Novo Post </Button>
+      <Button className="w-80  mt-10  m-[39px]">Novo Post </Button>
     </div>
 
   )

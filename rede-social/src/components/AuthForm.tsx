@@ -10,20 +10,20 @@ import { TextInput } from "./TextInput";
 
 
 const zod = z.object({
-  email: z.string(),
-  senha: z.string().min(6),
+  user: z.string(),
+  password: z.string().min(6),
 })
 
+interface AuthFormElements extends HTMLFormControlsCollection {
+  user: HTMLInputElement;
+  password: HTMLInputElement;
+}
 export interface Auth {
- email: string;
-  nome?: string;
-  senha: string;
+  user: string;
+  name?: string;
+  password: string;
 }
 
-interface AuthFormElements extends HTMLFormControlsCollection {
-  email: HTMLInputElement;
-  senha: HTMLInputElement;
-}
 
 interface AuthFormElement extends HTMLFormElement {
   readonly elements: AuthFormElements;
@@ -50,10 +50,11 @@ export function AuthForm({
     const form = event.currentTarget;
     
     const auth = {
-      email: form.elements.email.value,
-      senha: form.elements.senha.value,
+      user: form.elements.user.value,
+      password: form.elements.password.value,
     };
-    
+      console.log(auth);
+      
      zod.parse(auth)
      submitFormButtonAction(auth);
   };
@@ -83,8 +84,8 @@ export function AuthForm({
               <Envelope />
             </TextInput.Icon>
             <TextInput.Input
-              id="email"
-              type="email"
+              id="user"
+              type="text"
               placeholder="Digite seu email"
             />
           </TextInput.Root>
@@ -99,7 +100,7 @@ export function AuthForm({
               <Lock />
             </TextInput.Icon>
             <TextInput.Input
-              id="senha"
+              id="password"
               type="password"
               placeholder="************"
           

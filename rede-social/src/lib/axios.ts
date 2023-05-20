@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: "http://localhost:8080/usuario/"
+  baseURL: 'http://localhost:4000/v1/'
 })
 
 
-export const apiPost = axios.create({
-  baseURL: "http://localhost:8080/postagem/"
-})

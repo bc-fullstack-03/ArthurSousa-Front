@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Feed } from "../components/Feed";
 import { MainScreen } from "../components/MainScreen";
-import { apiPost } from "../lib/axios";
+import { api } from "../lib/axios";
 import { getAuthHeader } from "../services/auth";
 
 export function Home() {
@@ -11,7 +11,8 @@ export function Home() {
   useEffect(() => {
     async function getPosts() {
       try {
-        const { data } = await apiPost.get('postagens', authHeader)
+        const { data } = await api.get('feed',authHeader)
+        console.log(data)
         setPosts(data)
 
       } catch (error) {

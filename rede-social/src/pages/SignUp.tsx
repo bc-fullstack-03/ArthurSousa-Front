@@ -10,12 +10,12 @@ export function SignUp(){
   async function handleRegister(auth:Auth) {
     
     try {
-      await api.post('cadastra',auth)
+      await api.post('security/register',auth)
       console.log(auth)
  
       navigate("/")
     } catch (error) {
-      alert('Erro na criação de usuário')
+      alert('Erro na criação de usuário' + error)
     }
   }
 

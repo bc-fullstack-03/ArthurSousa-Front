@@ -1,9 +1,11 @@
 export interface Post {
-  id: string,
-  nome:string,
-  titulo: string,
-  conteudo: string,
-  dataDaPublicacao: Date,
-  comentarios: [],
+  _id: string,
+  title: string,
+  descripion: string,
+  profile:{
+    name: string,
+  }
+  comments: [],
   likes: [],
+  image: boolean,
 }
