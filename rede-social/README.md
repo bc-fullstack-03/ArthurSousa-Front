@@ -12,3 +12,5 @@
  - clsx
  - fingmas
  - zod pra validar cadastro.
+
+arthursousarabelo2@gmail.com 💛
