@@ -1,4 +1,5 @@
 import { UserCircle } from "@phosphor-icons/react"
+import { NavLink } from "react-router-dom"
 import { Post } from "../types/Post"
 import { Heading } from "./Heading"
 import { PostItem } from "./PostItem"
@@ -6,9 +7,10 @@ import { Text } from "./Text"
 
 interface FeedProps {
   posts: Post[]
+  handleLike: (postId: string) =>void
 }
 
-export function Feed({ posts }: FeedProps) {
+export function Feed({ posts, handleLike }: FeedProps) {
   const user = localStorage.getItem("user")
 
   return (
@@ -24,7 +26,9 @@ export function Feed({ posts }: FeedProps) {
 
       <section>
         {posts && posts.map((post: Post) => (
-          <PostItem key={post._id} post={post}/>
+            <NavLink key={post._id} to={`/posts/${post._id}` } className="cursor-pointer">
+                <PostItem  post={post} handleLike={handleLike}/>
+            </NavLink>
         ))}
 
         

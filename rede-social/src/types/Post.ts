@@ -1,8 +1,8 @@
 export interface Post {
   _id: string,
   title: string,
-  descripion: string,
-  profile:{
+  description: string,
+  profile: {
     name: string,
   }
   comments: [],

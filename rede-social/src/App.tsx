@@ -8,6 +8,7 @@ import {
 import { Friends } from './pages/Friends';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
+import { PostDetail } from './pages/PostDetail';
 import { Profile } from './pages/Profile';
 import { SignUp } from './pages/SignUp';
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "friends",
     element: <Friends/>
+  },
+  {
+    path: "posts/:postId",
+    element: <PostDetail/>
   }
 ]);
 

@@ -10,7 +10,7 @@ import { TextInput } from "./TextInput";
 
 
 const zod = z.object({
-  user: z.string(),
+  user: z.string().email(),
   password: z.string().min(6),
 })
 
@@ -53,10 +53,9 @@ export function AuthForm({
       user: form.elements.user.value,
       password: form.elements.password.value,
     };
-      console.log(auth);
       
-     zod.parse(auth)
-     submitFormButtonAction(auth);
+    const result =  zod.parse(auth)
+     submitFormButtonAction(result);
   };
 
   return (
@@ -85,7 +84,7 @@ export function AuthForm({
             </TextInput.Icon>
             <TextInput.Input
               id="user"
-              type="text"
+              type="email"
               placeholder="Digite seu email"
             />
           </TextInput.Root>

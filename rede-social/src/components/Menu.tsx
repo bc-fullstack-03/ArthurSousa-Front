@@ -1,12 +1,25 @@
-import { House, User, UsersThree } from '@phosphor-icons/react';
-import { NavLink } from 'react-router-dom';
+import * as Dialog from '@radix-ui/react-dialog';
+import { useState } from 'react';
 import parrot from '../assets/parrot.svg';
-import { Button } from './Button';
-import { MenuItem, MenuItemRoot } from './MenuItem';
+import { Post } from '../types/Post';
+import { CreatePostButton } from './CreatePostButton';
+import { CreatePostDialog } from './CreatePostDiaolog';
+import { MenuLink } from './MenuLink';
 import { Text } from './Text';
 
+interface MenuProps{
+  postCreadted: (post: Post) => void | undefined
+}
 
-export function Menu() {
+export function Menu({postCreadted}:MenuProps) {
+
+  const [open , setOpen] = useState(false)
+  
+  function postCreated(post: Post){
+    setOpen(false)
+    postCreadted && postCreadted(post)
+
+  }
   return (
     <div className="basis-1/6 border-r border-slate-400  ml-4 pt-4 " >
       <div className="flex items-center ">
@@ -17,43 +30,16 @@ export function Menu() {
       </div>
 
       <ul className='pr-2 '>
-        <MenuItemRoot>
-          <MenuItem.Icon>
-            <House size={48} weight='fill' />
-          </MenuItem.Icon>
-
-          <NavLink to="/home">
-            <Text className="text-xl">Página Inicial </Text>
-          </NavLink>
-
-        </MenuItemRoot>
-
-        <MenuItemRoot>
-          <MenuItem.Icon>
-            <User size={48} weight='fill' />
-          </MenuItem.Icon>
-          <NavLink to="/profile">
-            <Text className="text-xl">
-              Perfil
-            </Text>
-          </NavLink>
-        </MenuItemRoot>
-
-        <MenuItemRoot>
-          <MenuItem.Icon>
-            <UsersThree size={48} weight='fill' />
-          </MenuItem.Icon>
-
-          <NavLink to="/friends">
-          <Text className="text-xl">Amigos</Text>
-
-          </NavLink>
-        </MenuItemRoot>
+        <MenuLink/>
 
       </ul>
 
-
-      <Button className="w-80  mt-10  m-[39px]">Novo Post </Button>
+      <footer className='flex flex-col items-center '>
+        <Dialog.Root open={open}  onOpenChange={setOpen}>
+          <CreatePostButton />
+          <CreatePostDialog postCreated={postCreated}/>
+        </Dialog.Root>
+      </footer>
     </div>
 
   )

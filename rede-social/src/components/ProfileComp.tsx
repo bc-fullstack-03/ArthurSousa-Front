@@ -15,14 +15,14 @@ export function ProfileComp() {
 
   }
   return (
-    <div className="basis-5/6 overflow-y-auto scroll-smooth ">
+    <div className="basis-5/6 overflow-y-auto scroll-smooth  ">
       <Heading className="border-b border-slate-400 mt-4">
-        <Text size="lg" className="text-xl font-extrabold ml-5 ">Profile</Text>
+        <Text size="lg" className="text-xl  font-extrabold ml-5 ">Profile</Text>
 
-        <div className=" ml-5 my-4 gap-2 max-w-sm" >
+        <div className=" ml-5 my-4 gap-2 max-w-sm " >
           <div className="flex flex-1 items-center ">
             <UserCircle size={48} weight='light' className="text-slate-50" />
-            <Text size="lg" className="font-extrabold ml-2"> {user} </Text>
+            <Text size="lg" className="font-extrabold  ml-2"> {user} </Text>
           </div>
           <Button onClick={handleLogout} className="mt-4  ">Sair</Button>
         </div>
